@@ -7,11 +7,20 @@ Each name and value pair of the source object has to be present in the object fr
 collection if it is to be included in the returned array.
 
  */ 
-// GUESS
+// this was hard - need to study more on keys and values 
 
+function whatIsInAName(collection, source) {
+  // "What's in a name? that which we call a rose
+  // By any other name would smell as sweet.”
+  // -- by William Shakespeare, Romeo and Juliet
+  var srcKeys = Object.keys(source);
 
-// ACTUAL 
-
+  return collection.filter(function (obj) {
+    return srcKeys.every(function (key) {
+      return obj.hasOwnProperty(key) && obj[key] === source[key];
+    });
+  });
+}
 
 /* WHAT I LEARNED
 
