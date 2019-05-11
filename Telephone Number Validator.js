@@ -215,7 +215,8 @@ checkLength("1 (555) 555-5555");
 
 
 4. Coding (break it into pieces and test each piece)
-
+- W3
+- Medium 
 
 */
 function checkTen(str) {
