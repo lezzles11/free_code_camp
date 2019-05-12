@@ -6,14 +6,7 @@
 3. Resources Used: 
 
 */
-
-
-// GUESS
-
-
-
-// ACTUAL 
-
+//Learned... 
 
 
 
