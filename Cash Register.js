@@ -1,3 +1,47 @@
+checkCashRegister(19.5, 20, [["PENNY", 1.01], ["NICKEL", 2.05], 
+["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], 
+["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]);
+
+const CASH 
+
+function checkCashRegister (price, cash, cid) {
+	let cashRegister = { status: '', change: cid};
+	const changeNeeded = parseFloat(cash-price).toFixed(2);
+	const changeAvailable = getTotalCashRegisterChange(cid); 
+	console.log(changeNeeded)
+	cashRegister.status = getCashRegisterStatus(changeNeeded, changeAvailable);
+
+	if(cashRegister.status === REGISTER_STATUS.insufficientFunds) {
+		cashRegister.change = [];
+		return cashRegister; 
+	}
+
+	cashRegister.change = getCustomersChange(changeNeeded, cid);
+
+	console.log(cashRegister.status); 
+}
+
+function getTotalCashRegisterStatus(changeNeeded, changeAvailable) {
+	if (Number(changeNeeded) > Number(changeAvailable)) {
+		return REGISTER_STATUS.insufficientFunds;
+	}
+	if (Number(changeNeeded) > Number(changeAvailable)) {
+		return REGISTER_STATUS.open; 
+	}
+	return REGISTER_STATUS.closed; 
+}
+
+function getTotalCashRegisterChange(changeInDrawer) {
+	let total = 0;
+
+	for (let change of changeInDrawer) {
+		let changeValue = change[1];
+		total += changeValue; 
+	}
+	return total.toFixed(2); 
+}
+
+
 /* QUESTION 
 Design a cash register drawer function checkCashRegister() that accepts 
 purchase price as the first 
@@ -30,28 +74,6 @@ checkCashRegister(19.5, 20, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1],
 // GUESS
 
 
-function checkCashRegister(price, cash, cid) {
-  // subtract second item from first 
-  // try to return the biggest bill first, and then find the next number to return 
-  var change = cash - price; 
-  let money = {
-  	"PENNY": 0.01,
-  	"NICKEL": 0.05, 
-  	"DIME": 0.1,
-  	"QUARTER": 0.25, 
-  	"ONE": 1.0,
-  	"FIVE": 5.0, 
-  	"TEN": 10.0, 
-  	"TWENTY": 20.0, 
-  	"ONE HUNDRED": 100
-  }
-  if (change === 0) {
-  	return "no change";
-  } else if (change )
-  
-  // Here is your change, ma'am.
-  return change;
-}
 
 // Example cash-in-drawer array:
 // [["PENNY", 1.01],
@@ -64,12 +86,8 @@ function checkCashRegister(price, cash, cid) {
 // ["TWENTY", 60],
 // ["ONE HUNDRED", 100]]
 
-checkCashRegister(19.5, 20, [["PENNY", 1.01], ["NICKEL", 2.05], 
-["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], 
-["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]);
 
 
-*/ 
 
 
 // ACTUAL 
